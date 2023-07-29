@@ -286,7 +286,8 @@ export const getCompanyById = async (req, res, next) => {
     }
 
     company.password = undefined;
-    response.status(200).json({
+
+    res.status(200).json({
       success: true,
       data: company,
     });

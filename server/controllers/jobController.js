@@ -136,10 +136,11 @@ export const getJobPosts = async (req, res, next) => {
     }
 
     //    [2. 6]
+
     if (exp) {
       queryObject.experience = {
-        $gte: experience[0],
-        $lte: experience[1],
+        $gte: Number(experience[0]) - 1,
+        $lte: Number(experience[1]) + 1,
       };
     }
 
