@@ -179,8 +179,8 @@ export const getJobPosts = async (req, res, next) => {
     const skip = (page - 1) * limit;
 
     //records count
-   // const totalJobs = await Jobs.countDocuments(queryResult);
-  //  const numOfPage = Math.ceil(totalJobs / limit);
+    const totalJobs = await Jobs.countDocuments(queryResult);
+    const numOfPage = Math.ceil(totalJobs / limit);
 
     queryResult = queryResult.limit(limit * page);
 
@@ -188,10 +188,10 @@ export const getJobPosts = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-     // totalJobs,
+      totalJobs,
       data: jobs,
       page,
-      //numOfPage,
+      numOfPage,
     });
   } catch (error) {
     console.log(error);
